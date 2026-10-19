@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'motion/react'
 import { Phone, CheckCircle2, Clock, Users, Monitor } from 'lucide-react'
+import { apiUrl } from '../utils/api'
 
 function BookDemo() {
   const [submitted, setSubmitted] = useState(false)
@@ -8,7 +9,7 @@ function BookDemo() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const formData = new FormData(e.target)
-    fetch('/api/demos', {
+    fetch(apiUrl('/api/v1/marketing/demos'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(Object.fromEntries(formData)),

@@ -1,5 +1,6 @@
 import { motion } from 'motion/react'
 import { Phone, Mail, MapPin, Target, Eye, Heart } from 'lucide-react'
+import { apiUrl } from '../utils/api'
 
 function About() {
   return (
@@ -155,7 +156,7 @@ function About() {
               onSubmit={(e) => {
                 e.preventDefault()
                 const formData = new FormData(e.target)
-                fetch('/api/inquiries', {
+                fetch(apiUrl('/api/v1/marketing/inquiries'), {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify(Object.fromEntries(formData)),
